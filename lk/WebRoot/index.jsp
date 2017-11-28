@@ -29,16 +29,16 @@
         <!--  <div class="login-screen">-->
           <div class="login-form">
             <div class="form-group">
-              <input type="text" class="form-control login-field" value="" placeholder="请输入工号" id="login-name" />
+              <input type="text" class="form-control login-field"  placeholder="请输入工号" id="login-name" name="login-name" />
               <label class="login-field-icon fui-user" for="login-name"></label>
             </div>
 
             <div class="form-group">
-              <input type="password" class="form-control login-field" value="" placeholder="请输入密码" id="login-pass" />
+              <input type="password" class="form-control login-field"  placeholder="请输入密码" id="login-pass" name="login-pass"/>
               <label class="login-field-icon fui-lock" for="login-pass"></label>
             </div>
 
-            <a class="btn btn-primary btn-lg btn-block" href="${pageContext.request.contextPath }/login">登录</a>
+           <input type="submit" class="btn btn-primary btn-lg btn-block"  id="login" value="登录"/>
             <a class="login-link" href="#">忘记密码?</a>
           </div>
         <!--  </div>-->
@@ -96,7 +96,11 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/bootstrap.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/ie10-viewport-bug-workaround.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/flat-ui.min.js"></script>
-    
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		
+    	});
+    </script>
   </body>
 </html>
 
