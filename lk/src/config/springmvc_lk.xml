@@ -17,6 +17,10 @@
 	<!-- 开启注解扫描@controller -->
    <context:component-scan base-package="springmvc_qch_controller"></context:component-scan>
    
+   <bean id="loginController" class="springmvc_qch_controller.LoginController">
+		<property name="login" ref="loginServiceImpl"></property>
+	</bean>
+   
    <!-- 开启注解驱动 -->
    <mvc:annotation-driven></mvc:annotation-driven>
    

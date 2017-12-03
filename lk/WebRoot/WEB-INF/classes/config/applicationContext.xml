@@ -13,6 +13,7 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	
-	
+	<!-- 配置文件分开配置   当spring和springMVC整合时，他们的容器不一样， controller单独使用配置 -->
+	<import resource="spring_service.xml"/>
+	<import resource="spring_dao.xml"/>
 	</beans>

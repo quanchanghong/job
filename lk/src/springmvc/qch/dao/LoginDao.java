@@ -4,6 +4,6 @@ import springmvc.qch.pojo.User;
 
 public interface LoginDao {
 	
-	public User checkUserByPwdAndName() throws Exception;
+	public User checkUserByPwdAndName(String pwd, String name) throws Exception;
 
 }

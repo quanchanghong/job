@@ -56,4 +56,8 @@
 		<aop:advisor advice-ref="myAdvice" pointcut="execution(public * com.qch.serviceImpl.AccountServiceImpl.pay(..))"/>
 	</aop:config>-->
 	
+	<bean id="loginDao" class="springmvc.qch.daoImpl.LoginDaoImpl">
+		<property name="template" ref="jdbcTemplate"/>
+	</bean>
+	
 	</beans>
