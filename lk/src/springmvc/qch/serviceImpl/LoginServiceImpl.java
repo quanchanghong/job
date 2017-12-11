@@ -19,4 +19,11 @@ public class LoginServiceImpl implements LoginService{
 		return user;
 	}
 
+
+	@Override
+	public String findPwdByEmail(String email, String username) throws Exception {
+		
+		return loginDao.findPwdByEmail(email,username);
+	}
+
 }

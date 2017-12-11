@@ -1,15 +1,18 @@
 package springmvc_qch_controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import springmvc.qch.pojo.User;
 import springmvc.qch.service.LoginService;
-import springmvc.qch.serviceImpl.LoginServiceImpl;
 
 
 @Controller
@@ -41,6 +44,27 @@ public class LoginController {
 			return null;
 		}
 		
+	}
+	
+	@RequestMapping("/getPwd")
+	public String getPwdByUser(HttpServletResponse response) throws IOException{
+		
+		return "user/forgetPwd";
+	}
+	
+	@RequestMapping(value="/findPwd", produces="text/html; charset=UTF-8"  )
+	@ResponseBody
+	public String findPwd(@RequestParam String email, @RequestParam String username, String phone, String code) throws Exception{
+		
+		if (email.isEmpty() || username.isEmpty()){
+			return "用户名或者邮箱为空!";
+		}
+		
+		String pwd = login.findPwdByEmail(email, username);
+		if (pwd == null){
+			pwd = "用户名或者邮箱不存在!";
+		}
+		return pwd;
 	}
 
 }

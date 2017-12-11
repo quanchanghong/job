@@ -21,7 +21,7 @@ public class LoginDaoImpl implements LoginDao{
 	public User checkUserByPwdAndName(String pwd, String name) throws Exception {
 		User user = null;
 		String sql = "select * from user where userName = ? and password = ?";
-		try{
+		try{//如果不抓异常，当用户和密码为空时会报异常
 			user = template.queryForObject(sql, new Object[]{name, pwd}, new RowMapper<User>() {
 
 				@Override
@@ -40,6 +40,20 @@ public class LoginDaoImpl implements LoginDao{
 		}
 		
 		return user;
+	}
+
+	@Override
+	public String findPwdByEmail(String email, String username) throws Exception {
+		String sql  = "select password from user where userName = ? and email = ?";
+		String pwd = null;
+		try {
+			pwd = template.queryForObject(sql, new Object[]{username, email}, String.class);
+		}catch(Exception e){
+			System.out.println(".......");
+		}
+		
+		
+		return pwd;
 	}
 
 

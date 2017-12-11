@@ -19,7 +19,7 @@
    
    <bean id="loginController" class="springmvc_qch_controller.LoginController">
 		<property name="login" ref="loginServiceImpl"></property>
-	</bean>
+	</bean> 
    
    <!-- 开启注解驱动 -->
    <mvc:annotation-driven></mvc:annotation-driven>
