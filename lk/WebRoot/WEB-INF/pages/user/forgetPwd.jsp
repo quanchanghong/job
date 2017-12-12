@@ -41,9 +41,28 @@
       				<input type="submit" class="btn btn-primary" id="find" value="找回密码" style="width: 400px;margin-left: 40px">
     			</div>
     		</div>
+    		
     	</form>
     	</div>
-    </div>
+		<div class="modal" tabindex="-1" role="dialog" id="myModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">密码找回</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p id="msg"></p>
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-primary" href="${pageContext.request.contextPath }">登录</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
     <script type="text/javascript">
     	$(document).ready(function(){
     		$("#find").on("click", function(event){
@@ -53,7 +72,8 @@
     				data:{username:$("#username").val(), email:$("#email").val(), phone:$("#phone").val()},
     				async:"false",
     				success:function(data){
-    					alert(data);
+    					$("#myModal").modal('show');
+    					$("#msg").html(data);
     				}
     			});
     			return false;

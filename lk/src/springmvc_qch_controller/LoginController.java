@@ -30,8 +30,8 @@ public class LoginController {
 		String name = request.getParameter("login-name").trim();
 		String pwd = request.getParameter("login-pass").trim();
 		if (name.isEmpty() || pwd.isEmpty()){
-			response.sendRedirect("index.jsp");
-			return null;
+			//response.sendRedirect("index.jsp");
+			return "index";
 		}
 		
 		User user = login.getUserByPwdName(pwd, name);
@@ -40,8 +40,8 @@ public class LoginController {
 			session.setAttribute("user", user);
 			return "main";
 		}else{
-			response.sendRedirect("index.jsp");
-			return null;
+			//response.sendRedirect("index.jsp");
+			return "index";
 		}
 		
 	}
