@@ -17,4 +17,8 @@
 		<property name="loginDao" ref="loginDao"></property>
 	</bean>
 	
+	<bean id="departmentServiceImpl" class="springmvc.qch.serviceImpl.DepartmentServiceImpl">
+		<property name="departmentDao" ref="departmentDaoImpl"></property>
+	</bean>
+	
 	</beans>

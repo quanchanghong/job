@@ -60,4 +60,7 @@
 		<property name="template" ref="jdbcTemplate"/>
 	</bean>
 	
+	<bean id="departmentDaoImpl" class="springmvc.qch.daoImpl.DepartmentDaoImpl">
+		<property name="template" ref="jdbcTemplate"/>
+	</bean>
 	</beans>

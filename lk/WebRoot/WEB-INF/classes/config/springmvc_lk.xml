@@ -17,10 +17,6 @@
 	<!-- 开启注解扫描@controller -->
    <context:component-scan base-package="springmvc_qch_controller"></context:component-scan>
    
-   <bean id="loginController" class="springmvc_qch_controller.LoginController">
-		<property name="login" ref="loginServiceImpl"></property>
-	</bean> 
-   
    <!-- 开启注解驱动 -->
    <mvc:annotation-driven></mvc:annotation-driven>
    
@@ -32,5 +28,13 @@
    
    <!-- 如下代码为了解决有时候提示URLmapping找不到把系统相关js文件拦截导致界面前台框架js无效的问题 -->
    <mvc:default-servlet-handler/>  
+   
+   <bean id="loginController" class="springmvc_qch_controller.LoginController">
+		<property name="login" ref="loginServiceImpl"></property>
+	</bean> 
+	
+	<bean id="departmentController" class="springmvc_qch_controller.DepartmentController">
+		<property name="departmentService" ref="departmentServiceImpl"></property>
+	</bean>
 
 </beans>
