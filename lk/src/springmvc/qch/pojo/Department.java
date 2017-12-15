@@ -4,7 +4,7 @@ public class Department {
 	
 	private Integer departmentId;
 	private String departmentName;
-	private Integer departmentLeaderId;
+	private String departmentLeaderId;
 	private String departmentDesc;
 	private String departmentPosition;
 	private Integer isEnd;
@@ -24,10 +24,10 @@ public class Department {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-	public Integer getDepartmentLeaderId() {
+	public String getDepartmentLeaderId() {
 		return departmentLeaderId;
 	}
-	public void setDepartmentLeaderId(Integer departmentLeaderId) {
+	public void setDepartmentLeaderId(String departmentLeaderId) {
 		this.departmentLeaderId = departmentLeaderId;
 	}
 	public String getDepartmentDesc() {

@@ -15,11 +15,11 @@
   <style>
       body {
         <%--min-height: 2000px;--%>
-        padding-top: 60px;
+        padding-top: 70px;
       }
     </style>
     	
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="height: 60px">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,7 +35,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="${pageContext.request.contextPath}/department">部门管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/department/list">部门管理</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="navbars.html">Something else here</a></li>
                 

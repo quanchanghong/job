@@ -33,26 +33,9 @@
   						<td>${department.departmentLeaderId}</td>
   						<td>${department.departmentPosition}</td>
   						<td>${department.departmentDesc}</td>
-  						<td><a href="#">编辑</a></td>
+  						<td><a href="${pageContext.request.contextPath }/department/edit?departmentId=${department.departmentId}">编辑</a></td>
   					</tr>
   					</c:forEach>
-  					
-  					<!-- <tr>
-  						<th scope="row">2</th>
-  						<td>研发部</td>
-  						<td>code2</td>
-  						<td>二楼</td>
-  						<td>全是基佬</td>
-  						<td><a href="#">编辑</a></td>
-  					</tr>
-  					<tr>
-  						<th scope="row">3</th>
-  						<td>人力资源</td>
-  						<td>code3</td>
-  						<td>一楼</td>
-  						<td>全是妹子</td>
-  						<td><a href="#">编辑</a></td>
-  					</tr> -->
   				</tbody>
   			</table>
   		</form>
