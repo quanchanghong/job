@@ -73,4 +73,15 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		});
 		return department;
 	}
+
+	@Override
+	public Department updateDepart(Department department) {
+		Department depart = null;
+		String sql = "update department set departmentName = ? , departmentLeaderId = ? , departmentDesc = ? , departmentPosition = ? where departmentId = ?";
+		int update = template.update(sql, department.getDepartmentName(), department.getDepartmentLeaderId(), department.getDepartmentDesc(), department.getDepartmentPosition(),department.getDepartmentId());
+		if (update > 0){
+			depart = department;
+		}
+		return depart;
+	}
 }

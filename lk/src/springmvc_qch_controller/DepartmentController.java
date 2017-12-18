@@ -36,8 +36,17 @@ public class DepartmentController {
 	
 	@RequestMapping(value="/update")
 	public String updateDepart(Department department, Model model){
-		System.out.println(department);
-		return null;
+		Department depart = departmentService.updateDepart(department);
+		String msg = "修改失败!";
+		
+		if (depart != null){
+			msg = "修改成功!";
+			model.addAttribute("department", depart);
+		}
+		
+		model.addAttribute("updateMsg", msg);
+		
+		return "department/departmentedit";
 	}
 	
 	

@@ -11,7 +11,7 @@ public class UserTest {
 	public void testLogin(){
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("/config/spring_dao.xml");
 		JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean("jdbcTemplate");
-		jdbcTemplate.execute("insert into user(userId, username, password) values(3,'testjdbc','hello')");
+		jdbcTemplate.execute("insert into user(userId, username, password) values(3,'ÖÐ¹ú','ÄãºÃ')");
 	}
 	
 	

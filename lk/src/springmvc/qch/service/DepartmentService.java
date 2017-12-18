@@ -10,4 +10,6 @@ public interface DepartmentService {
 
 	Department getDepartByDepartId(int i);
 
+	Department updateDepart(Department department);
+
 }

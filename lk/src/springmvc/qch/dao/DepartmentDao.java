@@ -10,4 +10,6 @@ public interface DepartmentDao {
 
 	Department getDepartByDepartId(int departmentId);
 
+	Department updateDepart(Department department);
+
 }

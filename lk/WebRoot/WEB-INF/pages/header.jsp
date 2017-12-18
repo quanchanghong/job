@@ -25,7 +25,7 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
           </button>
-          <a class="navbar-brand" href="#">亚翔工程云</a>
+          <a class="navbar-brand" href="#">亚翔综合系统</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -33,11 +33,11 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">环安卫中心 <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="${pageContext.request.contextPath}/department/list">部门管理</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="navbars.html">Something else here</a></li>
+                <li><a href="#">专案管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/list">用户管理</a></li>
                 
                 <li><a href="www.baidu.com">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>

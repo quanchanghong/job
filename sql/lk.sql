@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2017-12-14 16:28:23
+Date: 2017-12-18 17:21:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `departmentId` int(11) NOT NULL,
   `departmentName` varchar(255) DEFAULT NULL,
-  `departmentLeaderId` int(11) DEFAULT NULL,
+  `departmentLeaderId` varchar(20) NOT NULL,
   `departmentDesc` varchar(255) DEFAULT NULL,
   `departmentPosition` varchar(255) DEFAULT NULL,
   `isEnd` int(11) DEFAULT NULL,

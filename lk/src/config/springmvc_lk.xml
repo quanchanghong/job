@@ -36,5 +36,10 @@
 	<bean id="departmentController" class="springmvc_qch_controller.DepartmentController">
 		<property name="departmentService" ref="departmentServiceImpl"></property>
 	</bean>
+	
+	<!-- 使用autowire自动注入的属性 不需要配置property否则会报错！ -->
+	<!-- <bean id="userController" class="springmvc_qch_controller.UserController">
+		<property name="userService" ref="userServiceImpl"></property>
+	</bean> -->
 
 </beans>

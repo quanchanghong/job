@@ -13,12 +13,18 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
+	<context:component-scan base-package="springmvc.qch.serviceImpl"></context:component-scan>
+	
 	<bean id="loginServiceImpl" class="springmvc.qch.serviceImpl.LoginServiceImpl">
 		<property name="loginDao" ref="loginDao"></property>
 	</bean>
 	
 	<bean id="departmentServiceImpl" class="springmvc.qch.serviceImpl.DepartmentServiceImpl">
 		<property name="departmentDao" ref="departmentDaoImpl"></property>
+	</bean>
+	
+	<bean id="userServiceImpl" class="springmvc.qch.serviceImpl.UserServiceImpl">
+		<!-- <property name="userDao" ref="userDaoImpl"></property> -->
 	</bean>
 	
 	</beans>

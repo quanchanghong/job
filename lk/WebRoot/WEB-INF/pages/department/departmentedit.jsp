@@ -6,10 +6,14 @@
     <title>部门编辑</title>
   </head>
 
-<body class="container" style="border: 1px solid #D4D4D4;">
-	<div class="row" style="height: 100px"></div>
-	<div class="row">
-		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/department/update" method="post">
+<body class="container">
+	<div class="row" style="height: 100px">
+		<c:if test="${updateMsg != null}">
+			<span style="color: red">${updateMsg }</span>
+		</c:if>
+	</div>
+	<div class="row" style="border: 1px solid #D4D4D4; border-radius: 5px">
+		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/department/update" method="post" style="margin-top: 15px">
 			<div class="form-group">
 				<label for="departmentName" class="col-lg-2 control-label">名称</label>
 				<div class="col-lg-10">
@@ -43,7 +47,7 @@
 			<div class="form-group">
 				<label for="sub" class="col-lg-2 control-label"></label>
 				<div class="col-lg-10">
-					<input type="submit" class="btn btn-sm btn-primary" id="sub" value="提交" style="width: 450px;margin-left: 100px">
+					<input type="submit" class="btn btn-sm btn-primary" id="sub" value="修改" style="width: 450px;margin-left: 100px">
 				</div>
 			</div>
 		</form>

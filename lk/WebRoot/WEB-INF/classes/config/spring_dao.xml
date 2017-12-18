@@ -13,6 +13,8 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
+	<context:component-scan base-package="springmvc.qch.daoImpl"></context:component-scan>
+	
 	<context:property-placeholder location="classpath:/config/db.properties"/>
 	<!-- 配置C3P0的数据源 -->
 	 <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -62,5 +64,9 @@
 	
 	<bean id="departmentDaoImpl" class="springmvc.qch.daoImpl.DepartmentDaoImpl">
 		<property name="template" ref="jdbcTemplate"/>
+	</bean>
+	
+	<bean id="userDaoImpl" class="springmvc.qch.daoImpl.UserDaoImpl">
+		<!-- <property name="template" ref="jdbcTemplate"/> -->
 	</bean>
 	</beans>
