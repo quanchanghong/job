@@ -6,6 +6,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer userId;
 	private String userName;
+	private String userCode;
 	private String password;
 	private String email;
 	private String phone;
@@ -17,6 +18,27 @@ public class User implements Serializable{
 	private String birthday;
 	private String qq;
 	private String wechart;
+	private Integer state;
+	private String skill;
+	
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+	public Integer getState() {
+		return state;
+	}
+	public void setState(Integer state) {
+		this.state = state;
+	}
+	public String getUserCode() {
+		return userCode;
+	}
+	public void setUserCode(String userCode) {
+		this.userCode = userCode;
+	}
 	public Integer getUserId() {
 		return userId;
 	}
@@ -98,11 +120,11 @@ public class User implements Serializable{
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName
-				+ ", password=" + password + ", email=" + email + ", phone="
-				+ phone + ", address=" + address + ", IDNumber=" + IDNumber
-				+ ", headImageUrl=" + headImageUrl + ", departmentId="
-				+ departmentId + ", roleId=" + roleId + ", birthday="
-				+ birthday + ", qq=" + qq + ", wechart=" + wechart + "]";
+				+ ", userCode=" + userCode + ", password=" + password
+				+ ", email=" + email + ", phone=" + phone + ", address="
+				+ address + ", IDNumber=" + IDNumber + ", headImageUrl="
+				+ headImageUrl + ", departmentId=" + departmentId + ", roleId="
+				+ roleId + ", birthday=" + birthday + ", qq=" + qq
+				+ ", wechart=" + wechart + "]";
 	}
-	
 }

@@ -8,6 +8,7 @@
 	<link href="${pageContext.request.contextPath }/css/button.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/css/bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/css/flat-ui.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/css/qch.css">
   </head>
   
   <body>

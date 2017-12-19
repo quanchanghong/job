@@ -20,5 +20,8 @@
 		<property name="birthday" column="birthday"/>
 		<property name="qq" column="qq"/>
 		<property name="wechart" column="wechart"/>
+		<property name="userCode" column="userCode"></property>
+		<property name="state" column="state"></property>
+		<property name="skill" column="skill"></property>
 	</class>
 </hibernate-mapping>

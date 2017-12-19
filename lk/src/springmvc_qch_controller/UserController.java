@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import springmvc.qch.pojo.Page;
 import springmvc.qch.pojo.User;
 import springmvc.qch.service.UserService;
 
@@ -23,9 +25,12 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping(value="/list")
-	public String list(){
-		List<User> userList = userService.getAllUsers();
-		System.out.println(userList);
+	public String list(Page<User> page,Model model){
+		page.setCurrentPage(0);
+		//page.set
+		Page<User> p = userService.getAllUsersByPage(page);
+		System.out.println(p);
+		//model.addAttribute("userList", userList);
 		return "user/userList";
 	}
 

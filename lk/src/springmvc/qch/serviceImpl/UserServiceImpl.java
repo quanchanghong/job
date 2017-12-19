@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import springmvc.qch.dao.UserDao;
+import springmvc.qch.pojo.Page;
 import springmvc.qch.pojo.User;
 import springmvc.qch.service.UserService;
 
+@Transactional
 @Service(value="userService")
 public class UserServiceImpl implements UserService {
 	
@@ -18,6 +21,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getAllUsers() {
 		return userDao.getAllUsers();
+	}
+
+	@Override
+	public Page<User> getAllUsersByPage(Page<User> page) {
+		return userDao.getAllUsersByPage(page);
 	}
 
 }
