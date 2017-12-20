@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projection;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import springmvc.qch.dao.UserDao;
 import springmvc.qch.pojo.Page;
 import springmvc.qch.pojo.User;
+import springmvc.qch.vo.UserVO;
 
  @Repository
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
@@ -34,31 +37,24 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	}
 
 	@Override
-	public Page<User> getAllUsersByPage(Page<User> page) {
+	public Page<UserVO> getAllUsersByPage(Page<UserVO> page) {
 		Session session = this.getSessionFactory().getCurrentSession();
-		Criteria criteria = session.createCriteria(User.class);
 		
-		if ((page.getCurrentPage() == null) || (page.getCurrentPage() <= 1)){
-			criteria.setFirstResult(0);
-		}
-		else{
-			criteria.setFirstResult(page.getCurrentPage() * page.getPageSize());
-		}
+		Query query = session.createQuery("from User as u, Role as r, Department as d where u.roleId=r.roleId and u.departmentId=d.departmentId");
+		query.setFirstResult((page.getCurrentPage() - 1) * page.getPageSize());
+		query.setMaxResults(page.getPageSize());
 		
-		criteria.setMaxResults((page.getCurrentPage() + 1) * page.getPageSize());
-		List<User> list = criteria.list();
+		List<UserVO> listVO = query.list();
 		
+		Page<UserVO> showPage = new Page<UserVO>();
+		showPage.setList(listVO);
 		
-		
-		Page<User> p = new Page<User>();
-		p.setList(list);
-		System.out.println(p.getList());
-		List<Integer> list2 = session.createCriteria(User.class).setProjection(Projections.count("userId")).list();
-		if (list2.size() > 0){
-			//p.setPageTotal(Integer.);
+		List<Long> rowTotal = session.createCriteria(User.class).setProjection(Projections.count("userId")).list();
+		if (rowTotal.size() > 0){
+			showPage.setPageTotal(rowTotal.get(0).intValue());
 		}
 		
-		return p;
+		return showPage;
 	}
 	
 	

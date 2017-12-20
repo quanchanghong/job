@@ -26,15 +26,15 @@
   							</tr>
   						</thead>
   						<tbody>
-  						<c:forEach items="${userList}" var="user" varStatus="status">
+  						<c:forEach items="${onePage.list}" var="uservo" varStatus="status">
   							<tr>
-  								<th scope="row">${status.count}</th>
-  								<td>${user.userName}</td>
-  								<td>${user.userCode}</td>
-  								<td>${user.departmentId}</td>
-  								<td>${user.state}</td>
-  								<td>${user.roleId}</td>
-  								<td>${user.skill}</td>
+  								<th scope="row">${status.count + (onePage.currentPage - 1)*onePage.pageSize}</th>
+  								<td>${uservo[0].userName}</td>
+  								<td>${uservo[0].userCode}</td>
+  								<td>${uservo[2].departmentName}</td>
+  								<td>${uservo[0].state}</td>
+  								<td>${uservo[1].roleName}</td>
+  								<td>${uservo[0].skill}</td>
   								<td width="14%">
   								<a  class="btn btn-success "  href="" style="height: 22px; padding-top: 1px;">编辑</a>
   								<a  class="btn btn-danger "  href=""  style="height: 22px; padding-top: 1px;">删除</a>
@@ -44,26 +44,22 @@
   						</tbody>
   					</table>
   				</div>
-  				<div id="foot_nav">
-				<div>
-					<a href="#fakelink" class="btn btn-success previous"> <i
-						class="fui-arrow-left"></i> 上一页 </a>
+  				<div id="foot_nav" style="position: absolute; bottom: 10px; margin-left: 20px;">
+					<c:if test="${onePage.currentPage > 1 }">
+						<a href="${pageContext.request.contextPath }/user/list?currentPage=${onePage.currentPage - 1}" class="btn btn-success previous"> <i class="fui-arrow-left"></i> 上一页 </a>
+					</c:if>
+					
 					<ul class="pagination pagination-success">
-						<li><a href="#fakelink">1</a>
-						</li>
-						<li><a href="#fakelink">2</a>
-						</li>
-						<li><a href="#fakelink">3</a>
-						</li>
-						<li><a href="#fakelink">4</a>
-						</li>
-						<li><a href="#fakelink">5</a>
-						</li>
+					<c:if test="${onePage.pageCount < 26}">
+						<c:forEach begin="1" end="${onePage.pageCount }" step="1" var="i">
+							<li><a href="${pageContext.request.contextPath }/user/list?currentPage=${i}">${i }</a>
+						</c:forEach>
+					</c:if>
 					</ul>
-					<a href="#fakelink" class="btn btn-success next"> 下一页 <i
-						class="fui-arrow-right"></i> </a>
-				</div>
-				<!-- /pagination -->
+					
+					<c:if test="${onePage.currentPage < onePage.pageCount }">
+						<a href="${pageContext.request.contextPath }/user/list?currentPage=${onePage.currentPage + 1}" class="btn btn-success next"> 下一页 <i class="fui-arrow-right"></i> </a>
+					</c:if>
 			</div>
   			</div>
   		</div>

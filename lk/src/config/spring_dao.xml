@@ -58,6 +58,8 @@
 		<property name="mappingResources">
 			<list>
 				<value>springmvc/qch/pojo/User.hbm.xml</value>
+				<value>springmvc/qch/pojo/Role.hbm.xml</value>
+				<value>springmvc/qch/pojo/Department.hbm.xml</value>
 			</list>
 		</property>
 	</bean> 

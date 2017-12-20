@@ -8,7 +8,7 @@ public class Page <T>{
 	private Integer pageCount;//总页数
 	private Integer pageSize = 15;//每页显示条数
 	private Integer pageTotal;//总的记录数
-	private Integer currentPage;//当前页
+	private Integer currentPage = 1;//当前页
 	private Integer nextPage;
 	private Integer lastPage;
 	private Integer firstPage;

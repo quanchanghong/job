@@ -10,6 +10,7 @@ import springmvc.qch.dao.UserDao;
 import springmvc.qch.pojo.Page;
 import springmvc.qch.pojo.User;
 import springmvc.qch.service.UserService;
+import springmvc.qch.vo.UserVO;
 
 @Transactional
 @Service(value="userService")
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Page<User> getAllUsersByPage(Page<User> page) {
+	public Page<UserVO> getAllUsersByPage(Page<UserVO> page) {
 		return userDao.getAllUsersByPage(page);
 	}
 
