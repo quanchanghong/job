@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import springmvc.qch.dao.UserDao;
 import springmvc.qch.pojo.Page;
 import springmvc.qch.pojo.User;
+import springmvc.qch.utils.HibernateSessionUtils;
 import springmvc.qch.vo.UserVO;
 
  @Repository
@@ -55,6 +56,17 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		}
 		
 		return showPage;
+	}
+
+	@Override
+	public User deleteUserById(int userId) {
+		Session session = HibernateSessionUtils.getCurrentSession(this);
+		User user = session.get(User.class, userId);
+		if (user != null){
+			session.delete(user);
+		}
+		
+		return user;
 	}
 	
 	

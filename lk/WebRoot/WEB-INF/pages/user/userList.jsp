@@ -5,10 +5,16 @@
   <head>
     <title>用户管理</title>
   </head>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		$("#btnAdd").on("click",function(){
+  		});
+  	});
+  </script>
   <body>
   		<div class="container">
   			<div class="row" style="height: 100px">
-  				<input type="button" class="btn btn-success" value="添加"/>
+  				<a type="button" class="btn btn-success" id="btnAdd" name="btnAdd" href="${pageContext.request.contextPath }/user/add" >添加</a>
   			</div>
   			<div class="row">
   				<div id="content">
@@ -36,8 +42,8 @@
   								<td>${uservo[1].roleName}</td>
   								<td>${uservo[0].skill}</td>
   								<td width="14%">
-  								<a  class="btn btn-success "  href="" style="height: 22px; padding-top: 1px;">编辑</a>
-  								<a  class="btn btn-danger "  href=""  style="height: 22px; padding-top: 1px;">删除</a>
+  								<a  class="btn btn-success "  href="${pageContext.request.contextPath }/user/edit?userId=${uservo[0].userId}" style="height: 22px; padding-top: 1px;">编辑</a>
+  								<a  class="btn btn-danger "  href="${pageContext.request.contextPath }/user/delete?userId=${uservo[0].userId}"  style="height: 22px; padding-top: 1px;">删除</a>
   								</td>
   							</tr>
   						</c:forEach>
@@ -57,9 +63,12 @@
 					</c:if>
 					</ul>
 					
+					<span class="btn btn-success">当前页:${onePage.currentPage}/${onePage.pageCount}</span>
+					
 					<c:if test="${onePage.currentPage < onePage.pageCount }">
 						<a href="${pageContext.request.contextPath }/user/list?currentPage=${onePage.currentPage + 1}" class="btn btn-success next"> 下一页 <i class="fui-arrow-right"></i> </a>
 					</c:if>
+					
 			</div>
   			</div>
   		</div>

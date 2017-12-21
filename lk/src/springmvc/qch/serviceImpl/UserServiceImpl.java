@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.getAllUsersByPage(page);
 	}
 
+	@Override
+	public User deleteUserById(int userId) {
+		return userDao.deleteUserById(userId);
+	}
+
 }

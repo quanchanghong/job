@@ -12,4 +12,6 @@ public interface UserDao {
 
 	Page<UserVO> getAllUsersByPage(Page<UserVO> page);
 
+	User deleteUserById(int userId);
+
 }

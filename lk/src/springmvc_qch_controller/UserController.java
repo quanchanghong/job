@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import springmvc.qch.pojo.Page;
 import springmvc.qch.pojo.User;
@@ -32,6 +34,18 @@ public class UserController {
 		onePage.setCurrentPage(page.getCurrentPage());
 		model.addAttribute("onePage", onePage);
 		return "user/userList";
+	}
+	
+	
+	@RequestMapping(value="/delete")
+	public String delete(@RequestParam String userId){
+		User user = userService.deleteUserById(Integer.parseInt(userId));
+		return "redirect:list";
+	}
+	
+	@RequestMapping(value="/add")
+	public String add(){
+		return "user/userAdd";
 	}
 
 }
