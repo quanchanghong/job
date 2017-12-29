@@ -1,6 +1,9 @@
 package springmvc_qch_controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import springmvc.qch.pojo.Page;
 import springmvc.qch.pojo.User;
@@ -44,8 +49,25 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/add")
-	public String add(){
+	public String add(Model model){
+		Map<String, List> departRoleAndStateMap = userService.getAllDepartRoleAndStateMap();
+		model.addAttribute("departRoleAndStateMap", departRoleAndStateMap);
+		//System.out.println(departRoleAndStateMap.toString());
 		return "user/userAdd";
+	}
+	
+	@RequestMapping(value="/save")
+	public String save(@RequestParam("header") MultipartFile headerImgFile, User user, HttpServletRequest request) throws Exception{
+		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)request;
+		Integer id = userService.saveUserInfo(headerImgFile, user, multiRequest);
+		return "redirect:list";
+	}
+	
+	@RequestMapping(value="edit")
+	public String edit(@RequestParam String userId, Model model){
+		User user = userService.getUserById(Integer.parseInt(userId));
+		model.addAttribute(user);
+		return "user/userEdit";
 	}
 
 }

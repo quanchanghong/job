@@ -38,7 +38,7 @@
   								<td>${uservo[0].userName}</td>
   								<td>${uservo[0].userCode}</td>
   								<td>${uservo[2].departmentName}</td>
-  								<td>${uservo[0].state}</td>
+  								<td>${uservo[3].userStateName}</td>
   								<td>${uservo[1].roleName}</td>
   								<td>${uservo[0].skill}</td>
   								<td width="14%">

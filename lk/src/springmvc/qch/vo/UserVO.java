@@ -4,12 +4,21 @@ import javax.management.relation.Role;
 
 import springmvc.qch.pojo.Department;
 import springmvc.qch.pojo.User;
+import springmvc.qch.pojo.UserState;
 
 public class UserVO {
 	
 	private Department department;
 	private Role role;
 	private User user;
+	private UserState userState;
+	
+	public UserState getUserState() {
+		return userState;
+	}
+	public void setUserState(UserState userState) {
+		this.userState = userState;
+	}
 	public Department getDepartment() {
 		return department;
 	}

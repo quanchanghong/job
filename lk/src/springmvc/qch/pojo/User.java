@@ -125,6 +125,8 @@ public class User implements Serializable{
 				+ address + ", IDNumber=" + IDNumber + ", headImageUrl="
 				+ headImageUrl + ", departmentId=" + departmentId + ", roleId="
 				+ roleId + ", birthday=" + birthday + ", qq=" + qq
-				+ ", wechart=" + wechart + "]";
+				+ ", wechart=" + wechart + ", state=" + state + ", skill="
+				+ skill + "]";
 	}
+	
 }

@@ -1,7 +1,10 @@
 package springmvc.qch.daoImpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.management.relation.Role;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -16,11 +19,17 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import springmvc.qch.dao.UserDao;
+import springmvc.qch.pojo.Department;
 import springmvc.qch.pojo.Page;
 import springmvc.qch.pojo.User;
+import springmvc.qch.pojo.UserState;
 import springmvc.qch.utils.HibernateSessionUtils;
 import springmvc.qch.vo.UserVO;
-
+/**
+ * userdao使用sessionfactory和hibernatetemplate相关的技术
+ * @author 1500000367-3
+ *
+ */
  @Repository
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	
@@ -41,7 +50,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	public Page<UserVO> getAllUsersByPage(Page<UserVO> page) {
 		Session session = this.getSessionFactory().getCurrentSession();
 		
-		Query query = session.createQuery("from User as u, Role as r, Department as d where u.roleId=r.roleId and u.departmentId=d.departmentId");
+		Query query = session.createQuery("from User as u, Role as r, Department as d, UserState as us where u.roleId=r.roleId and u.departmentId=d.departmentId and u.state=us.userStateId");
 		query.setFirstResult((page.getCurrentPage() - 1) * page.getPageSize());
 		query.setMaxResults(page.getPageSize());
 		
@@ -65,8 +74,43 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		if (user != null){
 			session.delete(user);
 		}
-		
 		return user;
+	}
+
+	@Override
+	public List<Department> getAllDepartments() {
+		List<Department> list = null;
+		Session session = HibernateSessionUtils.getCurrentSession(this);
+		list = session.createQuery(" from Department").list();
+		return list;
+	}
+
+	@Override
+	public List<Role> getAllRoles() {
+		List<Role> list = null;
+		Session session = HibernateSessionUtils.getCurrentSession(this);
+		list = session.createQuery(" from Role").list();
+		return list;
+	}
+
+	@Override
+	public List<UserState> getAllUserStates() {
+		List<UserState> list = null;
+		Session session = HibernateSessionUtils.getCurrentSession(this);
+		list = session.createQuery(" from UserState").list();
+		return list;
+	}
+
+	@Override
+	public Integer saveUserInfo(User user) {
+		Session session = HibernateSessionUtils.getCurrentSession(this);
+		Serializable id = session.save(user);
+		return (Integer) id;
+	}
+
+	@Override
+	public User getUserById(int userId) {
+		return HibernateSessionUtils.getCurrentSession(this).get(User.class, userId);
 	}
 	
 	

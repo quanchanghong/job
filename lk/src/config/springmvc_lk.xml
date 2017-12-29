@@ -41,5 +41,14 @@
 	<!-- <bean id="userController" class="springmvc_qch_controller.UserController">
 		<property name="userService" ref="userServiceImpl"></property>
 	</bean> -->
+	
+	<!-- 配置文件上传bean，如果使用servlet3.0不需要该配置   特别注意id不能随便写，必须为multipartResolver-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10240000"></property>
+	</bean>
+	
+	<!-- servlet3.0文件上传使用该配置 -->
+	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	</bean> -->
 
 </beans>
