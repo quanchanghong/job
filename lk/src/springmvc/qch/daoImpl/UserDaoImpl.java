@@ -1,17 +1,13 @@
 package springmvc.qch.daoImpl;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.relation.Role;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -104,8 +100,8 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	@Override
 	public Integer saveUserInfo(User user) {
 		Session session = HibernateSessionUtils.getCurrentSession(this);
-		Serializable id = session.save(user);
-		return (Integer) id;
+		session.saveOrUpdate(user);
+		return 0;
 	}
 
 	@Override

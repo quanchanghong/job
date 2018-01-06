@@ -22,6 +22,6 @@ public interface UserService {
 
 	Integer saveUserInfo(MultipartFile headerImgFile, User user, MultipartHttpServletRequest multiRequest) throws Exception;
 
-	User getUserById(int parseInt);
+	Map<String, Object> getUserMapById(int parseInt);
 
 }

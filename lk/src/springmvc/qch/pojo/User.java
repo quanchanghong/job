@@ -20,7 +20,28 @@ public class User implements Serializable{
 	private String wechart;
 	private Integer state;
 	private String skill;
+	private Role role;
+	private Department department;
+	private UserState userState;
 	
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	public UserState getUserState() {
+		return userState;
+	}
+	public void setUserState(UserState userState) {
+		this.userState = userState;
+	}
 	public String getSkill() {
 		return skill;
 	}
@@ -126,7 +147,8 @@ public class User implements Serializable{
 				+ headImageUrl + ", departmentId=" + departmentId + ", roleId="
 				+ roleId + ", birthday=" + birthday + ", qq=" + qq
 				+ ", wechart=" + wechart + ", state=" + state + ", skill="
-				+ skill + "]";
+				+ skill + ", role=" + role + ", department=" + department
+				+ ", userState=" + userState + "]";
 	}
 	
 }

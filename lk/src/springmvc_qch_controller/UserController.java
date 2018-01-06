@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -65,8 +64,9 @@ public class UserController {
 	
 	@RequestMapping(value="edit")
 	public String edit(@RequestParam String userId, Model model){
-		User user = userService.getUserById(Integer.parseInt(userId));
-		model.addAttribute(user);
+		Map<String, Object> userMap = userService.getUserMapById(Integer.parseInt(userId));
+		model.addAttribute("userEditMap",userMap);
+		System.out.println(userMap);
 		return "user/userEdit";
 	}
 

@@ -2,8 +2,6 @@ package springmvc.qch.serviceImpl;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,11 +71,13 @@ public class UserServiceImpl implements UserService {
 			}
 			
 			String userHeadImg = user.getUserName() + "-" + user.getUserCode() + "-" + headerImgFile.getOriginalFilename();
-			String imgPath = "//userheadimg" + "//" + userHeadImg;
+			String imgPath = "/userheadimg" + "/" + userHeadImg;
 			
 			user.setHeadImageUrl(imgPath);
 			
-			FileOutputStream fos = new FileOutputStream(imgPath);
+			String absoluteImgPath = UserConstants.USER_HEAD_IMG_BASE_PATH + "\\" + userHeadImg; 
+			
+			FileOutputStream fos = new FileOutputStream(absoluteImgPath);
 			fos.write(headerImgFile.getBytes());
 			fos.flush();
 			fos.close();
@@ -87,12 +87,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUserById(int userId) {
+	public Map<String, Object> getUserMapById(int userId) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		if (userId <= 0){
 			return null;
 		}
 		
-		return userDao.getUserById(userId);
+		User user = userDao.getUserById(userId);
+		List<Department> departments = userDao.getAllDepartments();
+		List<Role> roles = userDao.getAllRoles();
+		List<UserState> states = userDao.getAllUserStates();
+		
+		map.put("userEdit", user);
+		map.put("department", departments);
+		map.put("role", roles);
+		map.put("state", states);
+		
+		return map;
 	}
 
 }

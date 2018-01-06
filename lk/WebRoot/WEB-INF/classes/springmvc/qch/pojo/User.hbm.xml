@@ -23,5 +23,7 @@
 		<property name="userCode" column="userCode"></property>
 		<property name="state" column="state"></property>
 		<property name="skill" column="skill"></property>
+		<!-- 用户与角色为多对一的单向关系，所以只配置多端 -->
+		<many-to-one name="role" class="springmvc.qch.pojo.Role" column="roleId" insert="false" update="false" lazy="false"></many-to-one>
 	</class>
 </hibernate-mapping>
