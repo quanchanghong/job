@@ -106,4 +106,15 @@ public class UserServiceImpl implements UserService {
 		return map;
 	}
 
+	@Override
+	public Integer updateUserByUser(User user) {
+		if (user.getUserId() <= 0){
+			return 0;
+		}
+		
+		String imgPath = userDao.getUserHeadImgPathById(user.getUserId());
+		user.setHeadImageUrl(imgPath);
+		return userDao.updateUserByUser(user);
+	}
+
 }

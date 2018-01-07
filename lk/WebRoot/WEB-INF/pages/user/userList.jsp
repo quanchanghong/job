@@ -50,7 +50,7 @@
   						</tbody>
   					</table>
   				</div>
-  				<div id="foot_nav" style="position: absolute; bottom: 10px; margin-left: 20px;">
+  				<div id="foot_nav" style="position: relative; bottom: 10px; margin-left: 20px;">
 					<c:if test="${onePage.currentPage > 1 }">
 						<a href="${pageContext.request.contextPath }/user/list?currentPage=${onePage.currentPage - 1}" class="btn btn-success previous"> <i class="fui-arrow-left"></i> 上一页 </a>
 					</c:if>

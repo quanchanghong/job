@@ -66,8 +66,13 @@ public class UserController {
 	public String edit(@RequestParam String userId, Model model){
 		Map<String, Object> userMap = userService.getUserMapById(Integer.parseInt(userId));
 		model.addAttribute("userEditMap",userMap);
-		System.out.println(userMap);
 		return "user/userEdit";
+	}
+	
+	@RequestMapping(value="update")
+	public String updateUser(@RequestParam String userId, User user){
+		Integer counts = userService.updateUserByUser(user);
+		return "redirect:list";
 	}
 
 }

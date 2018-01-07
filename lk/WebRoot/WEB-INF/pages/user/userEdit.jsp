@@ -10,7 +10,7 @@
     <div class="container">
     	<div class="row" style="height: 100px"></div>
 		<div class="row">
-			<form action="${pageContext.request.contextPath}/user/save" method="post" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/user/update" method="post">
 			<div class="form-row">
 				<div class="form-group col-md-3">
 					<label for="userName">姓名</label> 
@@ -25,8 +25,9 @@
 					<input type="password" class="form-control" id="password" name="password" placeholder="Password" value="${userEditMap.userEdit.password }">
 				</div>
 				<div class="form-group col-md-3">
-					<label for="inputPassword4">部门</label> 
-					<select data-toggle="select" id="departmentId" name="departmentId" class="form-control select select-success mrs mbm" value="${userEditMap.userEdit.departmentId }">
+					<label for="departmentId">部门</label> 
+					<input type="hidden" id="departmentinput" value="${userEditMap.userEdit.departmentId }"/>
+					<select data-toggle="select" id="departmentId" name="departmentId" class="form-control select select-success mrs mbm" >
 						<!-- <option value="0">test</option> -->
 						<c:forEach items="${userEditMap.department }" var="depart" >
 							<option value="${depart.departmentId}">${depart.departmentName }</option>
@@ -49,7 +50,8 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label for="roleId">角色</label> 
-					<select data-toggle="select" id="roleId" name="roleId" class="form-control select select-success mrs mbm" value="${userEditMap.userEdit.roleId }">
+					<input type="hidden" id="roleinput" value="${userEditMap.userEdit.roleId }"/>
+					<select data-toggle="select" id="roleId" name="roleId" class="form-control select select-success mrs mbm">
 						<c:forEach items="${userEditMap.role }" var="role" >
 							<option value="${role.roleId }">${role.roleName}</option>
 						</c:forEach>
@@ -71,7 +73,8 @@
 				</div>
 				<div class="form-group col-md-3">
 					<label for="state">状态</label> 
-					<select data-toggle="select" id="state" name="state" class="form-control select select-success mrs mbm" value="${userEditMap.userEdit.state }">
+					<input type="hidden" id="stateinput" value="${userEditMap.userEdit.state }"/>
+					<select data-toggle="select" id="state" name="state" class="form-control select select-success mrs mbm">
 						<c:forEach items="${userEditMap.state }" var="userState" >
 							<option value="${userState.userStateId}">${userState.userStateName }</option>
 						</c:forEach>
@@ -88,12 +91,7 @@
 					<input type="text" class="form-control" id="skill" name="skill" placeholder="技能" value="${userEditMap.userEdit.skill }">
 				</div>
 				<div class="form-group col-md-3">
-					<!-- <label for="header">头像</label>  -->
-					<img alt="头像"  class="img-thumbnail" src="${userEditMap.userEdit.headImageUrl }" id="headerImg" name="headerImg" style="width: 155px; height: 140px;">
-				</div>
-				<div class="form-group col-md-3">
-					<label for="header">头像</label> 
-					<input type="file" class="form-control" id="header" name="header" placeholder="头像" onchange="showPreHeaderImg(this)">
+					<input type="hidden" class="form-control" id="userId" name="userId"  value="${userEditMap.userEdit.userId }">
 				</div>
 			</div>
 			<div class="form-row">
@@ -120,8 +118,43 @@
   		}
   	}
   	
+  	function initDepartSelect(){
+  		var ops = $("#departmentId option");
+  		for (var i = 0; i < ops.length; i++){
+  			if (ops[i].value == $("#departmentinput").val()){
+  				ops[i].selected = true;
+  				$("#select2-chosen-1").html(ops[i].text);
+  				break;
+  			}
+  		}
+  	}
+  	
+  	function initRoleSelect(){
+  		var ops = $("#roleId option");
+  		for (var i = 0; i < ops.length; i++){
+  			if (ops[i].value == $("#roleinput").val()){
+  				ops[i].selected = true;
+  				$("#select2-chosen-2").html(ops[i].text);
+  				break;
+  			}
+  		}
+  	}
+  	
+  	function initUserStateSelect(){
+  		var ops = $("#state option");
+  		for (var i = 0; i < ops.length; i++){
+  			if (ops[i].value == $("#stateinput").val()){
+  				ops[i].selected = true;
+  				$("#select2-chosen-3").html(ops[i].text);
+  				break;
+  			}
+  		}
+  	}
+  	
   	$(document).ready(function(){
-  		//$("#header").on("change", showPreHeaderImg(this));
+  		initDepartSelect();
+  		initRoleSelect();
+  		initUserStateSelect();
   	});
   	
   </script>

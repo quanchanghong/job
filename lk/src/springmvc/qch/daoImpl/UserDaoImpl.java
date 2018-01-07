@@ -1,5 +1,6 @@
 package springmvc.qch.daoImpl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,13 +101,27 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	@Override
 	public Integer saveUserInfo(User user) {
 		Session session = HibernateSessionUtils.getCurrentSession(this);
-		session.saveOrUpdate(user);
-		return 0;
+		Serializable id = session.save(user);
+		return (Integer) id;
 	}
 
 	@Override
 	public User getUserById(int userId) {
 		return HibernateSessionUtils.getCurrentSession(this).get(User.class, userId);
+	}
+
+	@Override
+	public Integer updateUserByUser(User user) {
+		HibernateSessionUtils.getCurrentSession(this).update(user);
+		return 0;
+	}
+
+	@Override
+	public String getUserHeadImgPathById(Integer userId) {
+		String sql = "select headImageUrl from user where userId = " + userId + "";
+		Query query = HibernateSessionUtils.getCurrentSession(this).createSQLQuery(sql);
+		List<String> list = query.list();
+		return list.get(0);
 	}
 	
 	

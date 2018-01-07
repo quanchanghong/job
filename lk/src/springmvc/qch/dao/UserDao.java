@@ -28,4 +28,8 @@ public interface UserDao {
 
 	User getUserById(int userId);
 
+	Integer updateUserByUser(User user);
+
+	String getUserHeadImgPathById(Integer userId);
+
 }

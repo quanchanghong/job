@@ -24,4 +24,6 @@ public interface UserService {
 
 	Map<String, Object> getUserMapById(int parseInt);
 
+	Integer updateUserByUser(User user);
+
 }
