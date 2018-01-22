@@ -92,4 +92,7 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 		<!-- <property name="template" ref="jdbcTemplate"/> -->
 	</bean>
+	<bean id="baseDaoImpl" class="springmvc.qch.daoImpl.BaseDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	</beans>

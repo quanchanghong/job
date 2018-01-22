@@ -29,4 +29,8 @@
 		<!-- <property name="userDao" ref="userDaoImpl"></property> -->
 	</bean>
 	
+	<bean id="" class="springmvc.qch.serviceImpl.BaseServiceImpl">
+		<property name="baseDao" ref="baseDaoImpl"></property>
+	</bean>
+	
 	</beans>
