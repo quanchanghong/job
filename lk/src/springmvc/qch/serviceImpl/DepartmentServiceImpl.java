@@ -6,7 +6,7 @@ import springmvc.qch.dao.DepartmentDao;
 import springmvc.qch.pojo.Department;
 import springmvc.qch.service.DepartmentService;
 
-public class DepartmentServiceImpl implements DepartmentService {
+public class DepartmentServiceImpl extends BaseServiceImpl<Department> implements DepartmentService {
 	
 	private DepartmentDao departmentDao;
 

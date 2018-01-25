@@ -1,4 +1,4 @@
-package springmvc.qch.serviceImpl;
+package springmvc.qch.test;
 
 import java.io.Serializable;
 import java.util.List;

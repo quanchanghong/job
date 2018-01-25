@@ -18,19 +18,23 @@
 	<tx:annotation-driven/>
 	
 	<bean id="loginServiceImpl" class="springmvc.qch.serviceImpl.LoginServiceImpl">
-		<property name="loginDao" ref="loginDao"></property>
+		<property name="loginDao" ref="loginDao"/>
 	</bean>
 	
 	<bean id="departmentServiceImpl" class="springmvc.qch.serviceImpl.DepartmentServiceImpl">
-		<property name="departmentDao" ref="departmentDaoImpl"></property>
+		<property name="departmentDao" ref="departmentDaoImpl"/>
 	</bean>
 	
 	<bean id="userServiceImpl" class="springmvc.qch.serviceImpl.UserServiceImpl">
 		<!-- <property name="userDao" ref="userDaoImpl"></property> -->
 	</bean>
 	
-	<bean id="" class="springmvc.qch.serviceImpl.BaseServiceImpl">
-		<property name="baseDao" ref="baseDaoImpl"></property>
+	<bean id="baseServiceImpl" class="springmvc.qch.serviceImpl.BaseServiceImpl">
+		<property name="baseDao" ref="baseDaoImpl"/>
 	</bean>
 	
+	<bean id="majorServiceImpl" class="springmvc.qch.serviceImpl.MajorServiceImpl" parent="baseServiceImpl">
+		<property name="majorDao" ref="majorDaoImpl"/>
+	</bean>
+		
 	</beans>

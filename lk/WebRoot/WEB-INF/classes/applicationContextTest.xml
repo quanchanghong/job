@@ -13,26 +13,11 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
-	<context:component-scan base-package="springmvc.qch.daoImpl"></context:component-scan>
-	
-	<bean id="loginDao" class="springmvc.qch.daoImpl.LoginDaoImpl">
-		<property name="template" ref="jdbcTemplate"/>
+	<bean id="baseService" class="springmvc.qch.test.BaseServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
 	</bean>
 	
-	<bean id="departmentDaoImpl" class="springmvc.qch.daoImpl.DepartmentDaoImpl">
-		<property name="template" ref="jdbcTemplate"/>
+	<bean id="baseDao" class="springmvc.qch.test.BaseDaoImpl">
 	</bean>
-	
-	<bean id="userDaoImpl" class="springmvc.qch.daoImpl.UserDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-		<!-- <property name="template" ref="jdbcTemplate"/> -->
-	</bean>
-	
-	<bean id="baseDaoImpl" class="springmvc.qch.daoImpl.BaseDaoImpl">
-		<!-- <property name="sessionFactory" ref="sessionFactory"/> -->
-	</bean>
-	
-	<bean id="majorDaoImpl" class="springmvc.qch.daoImpl.MajorDaoImpl">
 		
-	</bean>
 	</beans>

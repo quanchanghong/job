@@ -4,7 +4,7 @@ import java.util.List;
 
 import springmvc.qch.pojo.Department;
 
-public interface DepartmentService {
+public interface DepartmentService extends BaseService<Department>{
 
 	List<Department> getDepartmentList();
 

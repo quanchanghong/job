@@ -40,7 +40,7 @@
                 <li><a href="#">专案管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/list">用户管理</a></li>
                 
-                <li><a href="www.baidu.com">Separated link</a></li>
+                <li><a href="${pageContext.request.contextPath}/major">专业管理</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
             </li>

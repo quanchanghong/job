@@ -13,7 +13,84 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
+	<context:property-placeholder location="classpath:/config/db.properties"/>
+	<!-- 配置C3P0的数据源 -->
+	 <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean> 
+	<!--
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql:///lk"/>
+		<property name="user" value="root"/>
+		<property name="password" value="root"/>
+	</bean>-->
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+		
+	</bean>
+	
+	<!-- 开启注解模式的事务管理 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 该方式不使用hibernate配置方式，全部统一配置在spring中 -->
+	<bean id="sessionFactory"  name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>	
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>		
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>springmvc/qch/pojo/User.hbm.xml</value>
+				<value>springmvc/qch/pojo/Role.hbm.xml</value>
+				<value>springmvc/qch/pojo/Department.hbm.xml</value>
+				<value>springmvc/qch/pojo/UserState.hbm.xml</value>
+				<value>springmvc/qch/pojo/Major.hbm.xml</value>
+			</list>
+		</property>
+	</bean> 
+	
+	<!--  
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager"/>
+	</bean>-->
+	<!-- 通过spring底层aop配置管理事务 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="insert*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 5.aop-->
+	<aop:config>
+		<aop:pointcut id="pointcut" expression="execution(* springmvc.qch.serviceImpl.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
+	</aop:config>
+	
 	<!-- 配置文件分开配置   当spring和springMVC整合时，他们的容器不一样， controller单独使用配置 -->
-	<import resource="spring_service.xml"/>
+	
 	<import resource="spring_dao.xml"/>
+	
+	<import resource="spring_service.xml"/>
+	
 	</beans>

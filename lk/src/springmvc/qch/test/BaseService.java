@@ -1,12 +1,11 @@
-package springmvc.qch.dao;
+package springmvc.qch.test;
 
 import java.io.Serializable;
 import java.util.List;
 
 import springmvc.qch.pojo.Page;
 
-
-public interface BaseDao<T> {
+public interface BaseService<T> {
 	
 	T findEntityById(Integer id) throws Exception;
 	
@@ -21,5 +20,6 @@ public interface BaseDao<T> {
 	List<T> getAllEntitys(T t) throws Exception;
 	
 	Page<T> getOnePage(Class<T> clazz, Integer index, Integer max) throws Exception;
-
+	
+	
 }
