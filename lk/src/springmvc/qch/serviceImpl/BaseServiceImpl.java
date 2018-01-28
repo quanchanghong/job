@@ -50,4 +50,15 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 		return baseDao.getOnePage(clazz, index, max);
 	}
 
+	@Override
+	public T findEntityById(Class<T> clazz, Integer id) throws Exception {
+		return baseDao.findEntityById(clazz, id);
+	}
+
+	@Override
+	public <T> List<T> getAllEntitys(Class<T> clazz) throws Exception {
+		return baseDao.getAllEntitys(clazz);
+	}
+
+
 }

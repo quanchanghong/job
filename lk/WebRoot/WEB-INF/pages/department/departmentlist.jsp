@@ -30,7 +30,7 @@
   						<tr>
   						<th scope="row">${status.count}</th>
   						<td>${department.departmentName}</td>
-  						<td>${department.departmentLeaderId}</td>
+  						<td>${department.user.userName}</td>
   						<td>${department.departmentPosition}</td>
   						<td>${department.departmentDesc}</td>
   						<td><a href="${pageContext.request.contextPath }/department/edit?departmentId=${department.departmentId}">编辑</a></td>

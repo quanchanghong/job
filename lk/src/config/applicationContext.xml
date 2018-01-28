@@ -60,6 +60,7 @@
 				<value>springmvc/qch/pojo/Department.hbm.xml</value>
 				<value>springmvc/qch/pojo/UserState.hbm.xml</value>
 				<value>springmvc/qch/pojo/Major.hbm.xml</value>
+				<value>springmvc/qch/pojo/MajorSys.hbm.xml</value>
 			</list>
 		</property>
 	</bean> 
@@ -77,6 +78,7 @@
 			<tx:method name="delete*" propagation="REQUIRED"/>
 			
 			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
 			<tx:method name="*" propagation="REQUIRED"/>
 		</tx:attributes>
 	</tx:advice>

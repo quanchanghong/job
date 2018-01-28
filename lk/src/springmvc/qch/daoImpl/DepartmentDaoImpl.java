@@ -37,7 +37,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 				Department department = new Department();
 				department.setDepartmentId((Integer)map.get("DepartmentId"));
 				department.setDepartmentName((String)map.get("departmentName"));
-				department.setDepartmentLeaderId((String)map.get("departmentLeaderId"));
+				department.setDepartmentLeaderId((Integer)map.get("departmentLeaderId"));
 				department.setDepartmentDesc((String)map.get("departmentDesc"));
 				department.setDepartmentPosition((String)map.get("departmentPosition"));
 				department.setIsEnd((Integer)map.get("isEnd"));
@@ -62,7 +62,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 				while (rs.next()){
 					d.setDepartmentId(rs.getInt("departmentId"));
 					d.setDepartmentName(rs.getString("departmentName"));
-					d.setDepartmentLeaderId(rs.getString("departmentLeaderId"));
+					d.setDepartmentLeaderId(rs.getInt("departmentLeaderId"));
 					d.setDepartmentDesc(rs.getString("departmentDesc"));
 					d.setDepartmentPosition(rs.getString("departmentPosition"));
 					d.setIsEnd(rs.getInt("isEnd"));

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="springmvc.qch.pojo.MajorSys" table="majorsys">
+		<id name="majorSysId" column="majorSysId">
+		<generator class="native"></generator>
+		</id>
+		<property name="majorSysName" column="majorSysName"></property>
+		<property name="majorId" column="majorid"></property>
+		<property name="majorSysCode" column="majorSysCode"></property>
+		<many-to-one name="major" class="springmvc.qch.pojo.Major" column="majorId" insert="false" update="false" lazy="false"></many-to-one>
+	</class>
+
+</hibernate-mapping>

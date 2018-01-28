@@ -19,7 +19,11 @@ public interface BaseService<T> {
 	
 	List<T> getAllEntitys(T t) throws Exception;
 	
+	T findEntityById(Class<T> clazz, Integer id) throws Exception;
+	
 	Page<T> getOnePage(Class<T> clazz, Integer index, Integer max) throws Exception;
+	
+	<T> List<T> getAllEntitys(Class<T> clazz) throws Exception;
 	
 	
 }

@@ -22,4 +22,8 @@ public interface BaseDao<T> {
 	
 	Page<T> getOnePage(Class<T> clazz, Integer index, Integer max) throws Exception;
 
+	T findEntityById(Class<T> clazz, Integer id) throws Exception;
+
+	<T> List<T> getAllEntitys(Class<T> clazz) throws Exception;
+
 }

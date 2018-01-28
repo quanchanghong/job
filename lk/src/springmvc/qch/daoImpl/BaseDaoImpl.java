@@ -16,7 +16,7 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import springmvc.qch.dao.BaseDao;
 import springmvc.qch.pojo.Page;
 
-@SuppressWarnings("unchecked")
+
 public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>{
 
 	private Class<T> entityClazz;
@@ -39,9 +39,9 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>{
 	}
 	
 	@Override
-	public T findEntityById(Integer id) throws Exception {
+	public T findEntityById(Class<T> clazz,Integer id) throws Exception {
 		
-		return getCurrentSession().get(entityClazz, id);
+		return this.getCurrentSession().get(clazz, id);
 	}
 
 	@Override
@@ -91,6 +91,17 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>{
 		page.setCurrentPage(index);
 		
 		return page;
+	}
+
+	@Override
+	public T findEntityById(Integer id) throws Exception {
+		return getCurrentSession().get(entityClazz, id);
+	}
+
+	@Override
+	public <T> List<T> getAllEntitys(Class<T> clazz) throws Exception {
+		String hql = " from " + clazz.getSimpleName();
+		return getCurrentSession().createQuery(hql).list();
 	}
 
 }

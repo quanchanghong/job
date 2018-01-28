@@ -29,10 +29,11 @@
 	</bean>
 	
 	<bean id="baseDaoImpl" class="springmvc.qch.daoImpl.BaseDaoImpl">
-		<!-- <property name="sessionFactory" ref="sessionFactory"/> -->
+		 <property name="sessionFactory" ref="sessionFactory"/> 
 	</bean>
 	
-	<bean id="majorDaoImpl" class="springmvc.qch.daoImpl.MajorDaoImpl">
-		
-	</bean>
+	<bean id="majorDaoImpl" class="springmvc.qch.daoImpl.MajorDaoImpl"></bean>
+	
+	<bean id="majorSysDaoImpl" class="springmvc.qch.daoImpl.MajorSysDaoImpl"></bean>
+	
 	</beans>

@@ -4,14 +4,21 @@ public class Department {
 	
 	private Integer departmentId;
 	private String departmentName;
-	private String departmentLeaderId;
+	private Integer departmentLeaderId;
 	private String departmentDesc;
 	private String departmentPosition;
 	private Integer isEnd;
 	private Integer isStart;
 	private Integer topDepartmentId;
 	private Integer nextDepartmentId;
+	private User user;
 	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Integer getDepartmentId() {
 		return departmentId;
 	}
@@ -24,10 +31,10 @@ public class Department {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-	public String getDepartmentLeaderId() {
+	public Integer getDepartmentLeaderId() {
 		return departmentLeaderId;
 	}
-	public void setDepartmentLeaderId(String departmentLeaderId) {
+	public void setDepartmentLeaderId(Integer departmentLeaderId) {
 		this.departmentLeaderId = departmentLeaderId;
 	}
 	public String getDepartmentDesc() {
@@ -66,7 +73,6 @@ public class Department {
 	public void setNextDepartmentId(Integer nextDepartmentId) {
 		this.nextDepartmentId = nextDepartmentId;
 	}
-	
 	@Override
 	public String toString() {
 		return "Department [departmentId=" + departmentId + ", departmentName="
@@ -75,7 +81,7 @@ public class Department {
 				+ ", departmentPosition=" + departmentPosition + ", isEnd="
 				+ isEnd + ", isStart=" + isStart + ", topDepartmentId="
 				+ topDepartmentId + ", nextDepartmentId=" + nextDepartmentId
-				+ "]";
+				+ ", user=" + user + "]";
 	}
 	
 }

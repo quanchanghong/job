@@ -16,6 +16,6 @@
 		<property name="isStart" column="isStart"/>
 		<property name="topDepartmentId" column="topDepartmentId"/>
 		<property name="nextDepartmentId" column="nextDepartmentId"/>
-		
+		<many-to-one name="user" class="springmvc.qch.pojo.User" column="departmentLeaderId" unique="true" insert="false" update="false"></many-to-one>
 	</class>
 </hibernate-mapping>
