@@ -10,7 +10,11 @@
 			<generator class="native"></generator>
 		</id>
 		<property name="majorCode" column="majorCode"/>
-		<property name="majorName" column="majorName"></property>		
+		<property name="majorName" column="majorName"/>	
+		<set name="projmMjorSet">
+			<key column="majorId"></key>
+			<one-to-many class="springmvc.qch.pojo.ProjectMajorRelation"/>
+		</set>	
 	</class>
 	
 </hibernate-mapping>

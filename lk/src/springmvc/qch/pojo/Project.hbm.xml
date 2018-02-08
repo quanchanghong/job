@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="springmvc.qch.pojo.Project" table="project">
+		<id name="projId" column="projId">
+		<generator class="native"></generator>
+		</id>
+		<property name="projName" column="projName"></property>
+		<property name="projShortName" column="projShortName"></property>
+		<property name="projMark" column="projMark"></property>
+		<property name="projCode" column="projCode"></property>
+		<property name="projCreate" column="projCreate"></property>
+		<property name="projEnd" column="projEnd"></property>
+		<property name="projStart" column="projStart"></property>
+		<many-to-one name="projPD"  class="springmvc.qch.pojo.User" column="PDId" unique="true"></many-to-one>
+		<many-to-one name="projPM"  class="springmvc.qch.pojo.User" column="PMId" unique="true"></many-to-one>
+		<many-to-one name="projSM"  class="springmvc.qch.pojo.User" column="SMId" unique="true"></many-to-one>
+		<set name="projmMjorSet">
+			<key column="projId"></key>
+			<one-to-many class="springmvc.qch.pojo.Major" />
+		</set>
+	</class>
+
+</hibernate-mapping>
