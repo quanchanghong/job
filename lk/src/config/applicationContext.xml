@@ -61,6 +61,8 @@
 				<value>springmvc/qch/pojo/UserState.hbm.xml</value>
 				<value>springmvc/qch/pojo/Major.hbm.xml</value>
 				<value>springmvc/qch/pojo/MajorSys.hbm.xml</value>
+				<value>springmvc/qch/pojo/Project.hbm.xml</value>
+				<value>springmvc/qch/pojo/ProjectMajorRelation.hbm.xml</value>
 			</list>
 		</property>
 	</bean> 

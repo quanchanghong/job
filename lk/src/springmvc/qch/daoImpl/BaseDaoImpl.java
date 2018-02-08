@@ -3,6 +3,7 @@ package springmvc.qch.daoImpl;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,6 +16,8 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import springmvc.qch.dao.BaseDao;
 import springmvc.qch.pojo.Page;
+import springmvc.qch.pojo.Role;
+import springmvc.qch.pojo.User;
 
 
 public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>{
@@ -82,11 +85,15 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>{
 		criteria.setFirstResult((index - 1) * page.getPageSize());
 		criteria.setMaxResults(max);
 		List<T> list = criteria.list();
-		page.setList(list);
+		if (list.size() > 0 && list != null){
+			page.setList(list);
+		}
 		
 		Criteria criteriaCount = session.createCriteria(clazz);
 		List<Long> countList = criteriaCount.setProjection(Projections.rowCount()).list();
-		page.setPageTotal(countList.get(0).intValue());
+		if (countList.size() > 0 && countList != null){
+			page.setPageTotal(countList.get(0).intValue());
+		}
 		
 		page.setCurrentPage(index);
 		
@@ -102,6 +109,39 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T>{
 	public <T> List<T> getAllEntitys(Class<T> clazz) throws Exception {
 		String hql = " from " + clazz.getSimpleName();
 		return getCurrentSession().createQuery(hql).list();
+	}
+
+	@Override
+	public List<User> getAllSM() {
+		List<User> userList = null;
+		String hql = "from Role where roleName = 'SM'";
+		List<Role> list = getCurrentSession().createQuery(hql).list();
+		if (list != null && list.size() > 0){
+			userList = new ArrayList<User>(list.get(0).getUsers());
+		}
+		return userList;
+	}
+
+	@Override
+	public List<User> getAllPM() {
+		List<User> userList = null;
+		String hql = "from Role where roleName = 'PM'";
+		List<Role> list = getCurrentSession().createQuery(hql).list();
+		if (list != null && list.size() > 0){
+			userList = new ArrayList<User>(list.get(0).getUsers());
+		}
+		return userList;
+	}
+
+	@Override
+	public List<User> getAllPD() {
+		List<User> userList = null;
+		String hql = "from Role where roleName = 'PD'";
+		List<Role> list = getCurrentSession().createQuery(hql).list();
+		if (list != null && list.size() > 0){
+			userList = new ArrayList<User>(list.get(0).getUsers());
+		}
+		return userList;
 	}
 
 }

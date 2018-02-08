@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import springmvc.qch.pojo.Page;
+import springmvc.qch.pojo.User;
 
 
 public interface BaseDao<T> {
@@ -25,5 +26,11 @@ public interface BaseDao<T> {
 	T findEntityById(Class<T> clazz, Integer id) throws Exception;
 
 	<T> List<T> getAllEntitys(Class<T> clazz) throws Exception;
+	
+	List<User> getAllSM();
+	
+	List<User> getAllPM();
+	
+	List<User> getAllPD();
 
 }

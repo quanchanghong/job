@@ -36,4 +36,6 @@
 	
 	<bean id="majorSysDaoImpl" class="springmvc.qch.daoImpl.MajorSysDaoImpl"></bean>
 	
+	<bean id="projectDaoImpl" class="springmvc.qch.daoImpl.ProjectDaoImpl"></bean>
+	
 	</beans>

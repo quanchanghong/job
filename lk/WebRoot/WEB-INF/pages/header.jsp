@@ -37,7 +37,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">环安卫中心 <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="${pageContext.request.contextPath}/department/list">部门管理</a></li>
-                <li><a href="#">专案管理</a></li>
+                <li><a href="${pageContext.request.contextPath}/proj/list">专案管理</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/list">用户管理</a></li>
                 
                 <li><a href="${pageContext.request.contextPath}/major/list">专业管理</a></li>

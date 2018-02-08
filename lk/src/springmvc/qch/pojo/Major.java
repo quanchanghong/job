@@ -11,16 +11,25 @@ public class Major implements Serializable{
 	private Integer majorId;
 	private String majorCode;
 	private String majorName;
-	private Set<ProjectMajorRelation> projmMjorSet = new HashSet<ProjectMajorRelation>();
+	private Set<MajorSys> majorSysSet = new HashSet<MajorSys>();
+	/*private Set<ProjectMajorRelation> projectMajorRelations = new HashSet<ProjectMajorRelation>();
 	
-	public Set<ProjectMajorRelation> getProjmMjorSet() {
-		return projmMjorSet;
+	public Set<ProjectMajorRelation> getProjectMajorRelations() {
+		return projectMajorRelations;
 	}
-	public void setProjmMjorSet(Set<ProjectMajorRelation> projmMjorSet) {
-		this.projmMjorSet = projmMjorSet;
-	}
+	public void setProjectMajorRelations(
+			Set<ProjectMajorRelation> projectMajorRelations) {
+		this.projectMajorRelations = projectMajorRelations;
+	}*/
+	
 	public Integer getMajorId() {
 		return majorId;
+	}
+	public Set<MajorSys> getMajorSysSet() {
+		return majorSysSet;
+	}
+	public void setMajorSysSet(Set<MajorSys> majorSysSet) {
+		this.majorSysSet = majorSysSet;
 	}
 	public void setMajorId(Integer majorId) {
 		this.majorId = majorId;
@@ -37,10 +46,4 @@ public class Major implements Serializable{
 	public void setMajorName(String majorName) {
 		this.majorName = majorName;
 	}
-	@Override
-	public String toString() {
-		return "Major [majorId=" + majorId + ", majorCode=" + majorCode
-				+ ", majorName=" + majorName + "]";
-	}
-
 }

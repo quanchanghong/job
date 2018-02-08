@@ -40,5 +40,9 @@
 	<bean id="majorSysServiceImpl" class="springmvc.qch.serviceImpl.MajorSysServiceImpl" parent="baseServiceImpl">
 		<property name="majorSysDao" ref="majorSysDaoImpl"></property>
 	</bean>
+	
+	<bean id="projectServiceImpl" class="springmvc.qch.serviceImpl.ProjectServiceImpl">
+		<property name="projectDao" ref="projectDaoImpl"></property>
+	</bean>
 		
 	</beans>

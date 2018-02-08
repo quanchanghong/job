@@ -22,7 +22,17 @@ public class Project {
 	private String projCreate;
 	private User creator;
 	
-	private Set<ProjectMajorRelation> projmMjorSet = new HashSet<ProjectMajorRelation>();
+	//private Set<Major> projmMjorSet = new HashSet<Major>();
+	private Set<ProjectMajorRelation> projectMajorRelations = new HashSet<ProjectMajorRelation>();
+
+	public Set<ProjectMajorRelation> getProjectMajorRelations() {
+		return projectMajorRelations;
+	}
+
+	public void setProjectMajorRelations(
+			Set<ProjectMajorRelation> projectMajorRelations) {
+		this.projectMajorRelations = projectMajorRelations;
+	}
 
 	public Integer getProjId() {
 		return projId;
@@ -120,12 +130,12 @@ public class Project {
 		this.creator = creator;
 	}
 
-	public Set<ProjectMajorRelation> getProjmMjorSet() {
+	/*public Set<Major> getProjmMjorSet() {
 		return projmMjorSet;
 	}
 
-	public void setProjmMjorSet(Set<ProjectMajorRelation> projmMjorSet) {
+	public void setProjmMjorSet(Set<Major> projmMjorSet) {
 		this.projmMjorSet = projmMjorSet;
-	}
+	}*/
 
 }

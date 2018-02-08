@@ -11,10 +11,10 @@
 		</id>
 		<property name="majorCode" column="majorCode"/>
 		<property name="majorName" column="majorName"/>	
-		<set name="projmMjorSet">
+		<set name="majorSysSet" table="major_majorSys">
 			<key column="majorId"></key>
-			<one-to-many class="springmvc.qch.pojo.ProjectMajorRelation"/>
-		</set>	
+			<many-to-many column="majorSysId" class="springmvc.qch.pojo.MajorSys" unique="true"/>
+		</set>
 	</class>
 	
 </hibernate-mapping>
