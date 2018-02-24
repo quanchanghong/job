@@ -17,8 +17,16 @@
   						<thead>
   							<tr>
   								<th>序号</th>
-  								<th>编号</th>
-  								<th>名称</th>
+  								<th>专案编号</th>
+  								<th>专案名称</th>
+  								<th>专案简称</th>
+  								<th>创建日期</th>
+  								<th>开始日期</th>
+  								<th>结束日期</th>
+  								<th>PM</th>
+  								<th>PD</th>
+  								<th>SM</th>
+  								<th>创建者</th>
   								<th>操作</th>
   							</tr>
   						</thead>
@@ -26,8 +34,16 @@
   						<c:forEach items="${projPage.list}" var="proj" varStatus="status">
   							<tr>
   								<th scope="row">${status.count + (projPage.currentPage - 1)*projPage.pageSize}</th>
-  								<td></td>
-  								<td></td>
+  								<td>${proj.projCode}</td>
+  								<td>${proj.projName}</td>
+  								<td>${proj.projShortName}</td>
+  								<td>${proj.projCreate}</td>
+  								<td>${proj.projStart}</td>
+  								<td>${proj.projEnd}</td>
+  								<td>${proj.projPM.userName}</td>
+  								<td>${proj.projPD.userName}</td>
+  								<td>${proj.projSM.userName}</td>
+  								<td>${proj.creator.userName}</td>
   								<td width="14%">
   								<a  class="btn btn-success "  href="${pageContext.request.contextPath }/proj/edit?projId=${proj.projId}" style="height: 22px; padding-top: 1px;">编辑</a>
   								<a  class="btn btn-danger "  href="${pageContext.request.contextPath }/proj/delete?projId=${proj.projId}"  style="height: 22px; padding-top: 1px;">删除</a>

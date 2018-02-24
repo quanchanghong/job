@@ -15,16 +15,17 @@
 		<property name="projCreate" column="projCreate"></property>
 		<property name="projEnd" column="projEnd"></property>
 		<property name="projStart" column="projStart"></property>
-		<many-to-one name="projPD"  class="springmvc.qch.pojo.User" column="PDId" unique="true"></many-to-one>
-		<many-to-one name="projPM"  class="springmvc.qch.pojo.User" column="PMId" unique="true"></many-to-one>
-		<many-to-one name="projSM"  class="springmvc.qch.pojo.User" column="SMId" unique="true"></many-to-one>
+		<many-to-one name="creator"  class="springmvc.qch.pojo.User" column="creatorId" unique="true" lazy="false"></many-to-one>
+		<many-to-one name="projPD"  class="springmvc.qch.pojo.User" column="PDId" unique="true" lazy="false"></many-to-one>
+		<many-to-one name="projPM"  class="springmvc.qch.pojo.User" column="PMId" unique="true" lazy="false"></many-to-one>
+		<many-to-one name="projSM"  class="springmvc.qch.pojo.User" column="SMId" unique="true" lazy="false"></many-to-one>
 		<!-- <set name="projmMjorSet" table="proj_major">
 			<key column="projId"></key>
 			<many-to-many column="majorId" class="springmvc.qch.pojo.Major" unique="true"/>
 		</set> -->
 		<set name="projectMajorRelations" table="projectMajorRelation">
 			<key column="projId"></key>
-			<one-to-many class="springmvc.qch.pojo.ProjectMajorRelation"/>
+			<one-to-many class="springmvc.qch.pojo.ProjectMajorRelation" />
 		</set>
 	</class>
 
