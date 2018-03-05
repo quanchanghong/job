@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@include file="/WEB-INF/pages/header.jsp" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE>
 <html>
   <head>
     <title>专案成立</title>
@@ -9,26 +9,60 @@
   
   <body>
     <div class="container">
-  		<form action="${pageContext.request.contextPath}/major/save" method="post">
-			<div class="form-group row">
-				<label for="majName" class="col-sm-1 col-form-label font-weight-bold">专业名称</label>
-				<div class="col-sm-3">
-					<input type="text" class="form-control " id="majorName" name="majorName"   placeholder="请输入专业名称">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="majorCode" class="col-sm-1 col-form-label font-weight-bold">专业编码</label>
-				<div class="col-sm-3">
-					
-					<input type="text" class="form-control " id="majorCode" name="majorCode" placeholder="字母+数字">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-sm-4">
-					<input type="submit" class="form-control btn btn-success" value="添加">
-				</div>
-			</div>
-		</form>		
+    	<div id="" class="">
+    		<a class="btn btn-success" id="btnAdd" name="btnAdd" href="${pageContext.request.contextPath }/proj/add" >保存</a>		
+    	</div>
+    	<div id="main">
+    		<form action="${pageContext.request.contextPath}/major/save" method="post">
+      			<table style="width: 100%;" class="table table-bordered">
+      				<tr>
+      					<td style="width: 15%;" align="center">专案名称</td>
+      					<td><input type="text" class="form-control input-sm" placeholder="专案名称"></td>
+      					<td style="width: 15%;" align="center">PM</td>
+      					<td>
+      						<select data-toggle="select" id="PMId" name="PMId" class="form-control select select-success form-control select-sm mrs">
+								<c:forEach items="${departRoleAndStateMap.department }" var="depart" >
+									<option value="${depart.departmentId}">${depart.departmentName }</option>
+								</c:forEach>
+							</select>
+      					</td>
+      				</tr>
+      				<tr>
+      					<td style="width: 15%;" align="center">专案编号</td>
+      					<td><input type="text" class="form-control input-sm" placeholder="专案编号"></td>
+      					<td style="width: 15%;" align="center">SM</td>
+      					<td>
+      						<select data-toggle="select" id="SMId" name="SMId" class="form-control select select-success form-control select-sm mrs">
+								<c:forEach items="${departRoleAndStateMap.department }" var="depart" >
+									<option value="${depart.departmentId}">${depart.departmentName }</option>
+								</c:forEach>
+							</select>
+						</td>
+      				</tr>
+      				<tr>
+      					<td style="width: 15%;" align="center">专案简称</td>
+      					<td><input type="text" class="form-control input-sm" placeholder="专案简称"></td>
+      					<td style="width: 15%;" align="center">PD</td>
+      					<td>
+      						<select data-toggle="select" id="PDId" name="PDId" class="form-control select select-success form-control select-sm mrs">
+								<c:forEach items="${departRoleAndStateMap.department }" var="depart" >
+									<option value="${depart.departmentId}">${depart.departmentName }</option>
+								</c:forEach>
+							</select>
+						</td>
+      				</tr>
+      				<tr>
+      					<td style="width: 15%;" align="center">开始日期</td>
+      					<td><input type="date" class="form-control input-sm" placeholder="开始日期"></td>
+      					<td style="width: 15%;" align="center">结束日期</td>
+      					<td>
+      						<input type="date" class="form-control input-sm" placeholder="结束日期">
+						</td>
+      				</tr>
+      			</table>
+			</form>
+    	</div>
+  		
   	</div>
   </body>
 </html>

@@ -73,6 +73,7 @@
     
     <script src="${pageContext.request.contextPath }/js/jquery-3.2.1.js"></script>
     <script src="${pageContext.request.contextPath }/js/flat-ui.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/application.js"></script>
     <!--  <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>-->
   </body>
 </html>
