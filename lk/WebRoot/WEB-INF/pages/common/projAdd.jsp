@@ -60,6 +60,44 @@
 						</td>
       				</tr>
       			</table>
+      			<table style="width: 100%; margin-top: 30px;" class="table table-bordered">
+      				<thead>
+      					<tr>
+      						<th>序号</th>
+      						<th>专业</th>
+      						<th>主办工程师</th>
+      						<th>系统</th>
+      						<th>备注</th>
+      					</tr>
+      				</thead>
+      				<tbody>
+      					<tr>
+      						<td>1</td>
+      						<td>
+      							<select data-toggle="select" id="PDId" name="PDId" class="form-control select select-success form-control select-sm mrs">
+								<c:forEach items="${departRoleAndStateMap.department }" var="depart" >
+									<option value="${depart.departmentId}">${depart.departmentName }</option>
+								</c:forEach>
+								</select>
+      						</td>
+      						<td>
+      							<select data-toggle="select" id="PDId" name="PDId" class="form-control select select-success form-control select-sm mrs">
+								<c:forEach items="${departRoleAndStateMap.department }" var="depart" >
+									<option value="${depart.departmentId}">${depart.departmentName }</option>
+								</c:forEach>
+								</select>
+      						</td>
+      						<td>
+      							<select data-toggle="select" id="PDId" name="PDId" class="form-control select select-success form-control select-sm mrs">
+								<c:forEach items="${departRoleAndStateMap.department }" var="depart" >
+									<option value="${depart.departmentId}">${depart.departmentName }</option>
+								</c:forEach>
+								</select>
+      						</td>
+      						<td><input type="text" id="remark" name="remark" class="form-control input-sm"></td>
+      					</tr>
+      				</tbody>
+      			</table>
 			</form>
     	</div>
   		
